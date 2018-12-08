@@ -3,6 +3,9 @@ channels:
 - conda-forge
 - defaults
 dependencies:
+- numpy=1.15.4=py37h6a91979_0
+- opencv=3.4.2=py37h40b0b35_1
+- ffmpeg=4.0.2=ha0c5888_2
 - python=3.7.1=h46c1a51_0
 # The following dependencies are for development only
 - flake8=3.6.0=py37_1000
