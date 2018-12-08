@@ -1,0 +1,10 @@
+name: face-anonymizer
+channels:
+- conda-forge
+- defaults
+dependencies:
+- python=3.7.1=h46c1a51_0
+# The following dependencies are for development only
+- flake8=3.6.0=py37_1000
+- isort=4.3.4=py37_1000
+prefix: /Users/se7entyse7en/miniconda3/envs/face-anonymizer
