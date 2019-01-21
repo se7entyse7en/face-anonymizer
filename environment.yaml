@@ -3,6 +3,8 @@ channels:
 - conda-forge
 - defaults
 dependencies:
+- jupyter=1.0.0=py37_7
+- matplotlib=3.0.2=py37h54f8f79_0
 - numpy=1.15.4=py37h6a91979_0
 - opencv=3.4.2=py37h40b0b35_1
 - ffmpeg=4.0.2=ha0c5888_2
