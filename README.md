@@ -1,5 +1,7 @@
 # face-anonymizer
 
+Pixelates the faces detected using DNN Face Dectector in OpenCV.
+
 ## Installing and Running
 
 ## Environment setup for development
@@ -15,4 +17,4 @@ Run from the root of the project the Jupyter notebook:
 
     jupyter notebook
 
-Open the `notebook.ipynb` notebook.
+Open the `notebook.ipynb` notebook. The sample files can be found [here](https://github.com/se7entyse7en/face-anonymizer/tree/master/sample), the sample processed video can be found [here](https://github.com/se7entyse7en/face-anonymizer/tree/master/output).
