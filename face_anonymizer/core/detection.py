@@ -51,9 +51,16 @@ class FaceDetector:
             threshold: minimum confidence to consider a region as a face
 
         """
+        self._model_file_path = model_file_path
+        self._config_file_path = config_file_path
+
         self._net = cv2.dnn.readNetFromCaffe(
             config_file_path, model_file_path)
         self._threshold = threshold
+
+    def reinit(self):
+        self._net = cv2.dnn.readNetFromCaffe(
+            self._config_file_path, self._model_file_path)
 
     def detect_from_path(self, image_path: str,
                          threshold: Optional[float] = None) -> Tuple[
@@ -120,8 +127,18 @@ class FaceDetector:
                 box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
                 (start_x, start_y, end_x, end_y) = box.astype('int')
 
-                yield BoundingBox.from_xy_limits(
+                # Investigate why this normalization is needed
+                start_x = max(0, min(start_x, w))
+                end_x = max(0, min(end_x, w))
+
+                start_y = max(0, min(start_y, h))
+                end_y = max(0, min(end_y, h))
+
+                bbox = BoundingBox.from_xy_limits(
                     start_x, end_x, start_y, end_y, confidence)
+
+                if bbox.size[0] > 0 and bbox.size[1] > 0:
+                    yield bbox
 
 
 @dataclass(order=False)

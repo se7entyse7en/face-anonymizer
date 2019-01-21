@@ -74,8 +74,13 @@ class Manipulator:
             the modified image
 
         """
-        downsampled = cv2.resize(image, None, fx=1/strength, fy=1/strength,
+        x_strength = min(strength, image.shape[1])
+        y_strength = min(strength, image.shape[0])
+
+        downsampled = cv2.resize(image, None,
+                                 fx=1/x_strength, fy=1/y_strength,
                                  interpolation=cv2.INTER_AREA)
+
         return cv2.resize(downsampled, image.shape[:2][::-1],
                           interpolation=cv2.INTER_NEAREST)
 
