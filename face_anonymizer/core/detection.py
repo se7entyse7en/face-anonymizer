@@ -1,5 +1,4 @@
 from typing import Generator
-from typing import List
 from typing import Optional
 from typing import Tuple
 
@@ -10,9 +9,20 @@ from dataclasses import field
 
 
 class FaceExtractor:
+    """Faces extractor"""
 
+    @staticmethod
     def extract(image: np.ndarray, *bboxes: 'BoundingBox') -> Generator[
             np.ndarray, None, None]:
+        """Extracts the regions corresponding to the boxes from the image
+
+        Args:
+            image: the image we want to extract the regions from
+            bboxes: the bounding boxes identifying the regions to extract
+        Yields:
+            the regions extracted
+
+        """
         return (
             image[box.top_left[1]:box.bottom_left[1],
                   box.top_left[0]:box.top_right[0]] for box in bboxes
